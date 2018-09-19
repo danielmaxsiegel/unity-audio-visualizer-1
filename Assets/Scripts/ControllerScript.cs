@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent (typeof (AudioSource))]
 public class ControllerScript : MonoBehaviour {
     AudioSource aSource;
-    public float[] samples = new float[512];
+    public static float[] samples = new float[512];
 
 	// Use this for initialization
 	void Start () {
