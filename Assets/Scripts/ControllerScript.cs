@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent (typeof (AudioSource))]
 public class ControllerScript : MonoBehaviour {
     AudioSource aSource;
     public static float[] samples = new float[512];
@@ -15,16 +14,12 @@ public class ControllerScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        GetSpectrumAudioSource();
-        makeFrequencyBands();
+        aSource.GetSpectrumData(samples, 0, FFTWindow.Blackman); //wrap in func
+        makeSoundLights();
 	}
-
-    void GetSpectrumAudioSource() {
-        aSource.GetSpectrumData(samples, 0, FFTWindow.Blackman);
-    }
-
+        
     // divide frequencies into bands
-    void makeFrequencyBands(){
+    void makeSoundLights(){
         int count = 0;
 
         for (int i = 0; i < 8; ++i){
